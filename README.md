@@ -6,11 +6,17 @@
 
 ### Endpoints:
 http://localhost:8080/pessoas/listar
+
 http://localhost:8080/pessoas/listar/alfabetico
+
 http://localhost:8080/pedidos/listar
+
 http://localhost:8080/pedidos/listar/total
+
 http://localhost:8080/pedidos/listar/{idCliente}
+
 http://localhost:8080/produtos/listar
+
 http://localhost:8080/produtos/listar/preco
 
 
