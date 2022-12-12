@@ -1,0 +1,29 @@
+CREATE TABLE pessoa_tb(
+ID_Pessoa INT AUTO_INCREMENT PRIMARY KEY,
+cpf VARCHAR(11) NOT NULL,
+nome VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE pedido_tb(
+ID_Pedido INT AUTO_INCREMENT PRIMARY KEY,
+valor_total NUMERIC(10,2) NOT NULL,
+ID_Pessoa INT NOT NULL, CONSTRAINT fkPessoaPedido FOREIGN KEY(ID_Pessoa)
+REFERENCES pessoa_tb(ID_Pessoa)
+
+);
+
+CREATE TABLE produto_tb(
+ID_Produto INT AUTO_INCREMENT PRIMARY KEY,
+descricao VARCHAR(50) NOT NULL,
+valor_unitario NUMERIC(10,2) NOT NULL
+);
+
+CREATE TABLE pedido_item_tb(
+ID_Pedido_Item INT AUTO_INCREMENT PRIMARY KEY,
+quantidade INT NOT NULL,
+valor_total NUMERIC(10,2),
+ID_Produto INT NOT NULL, CONSTRAINT fkItemProduto FOREIGN KEY(ID_Produto)
+REFERENCES produto_tb(ID_Produto),
+ID_Pedido INT NOT NULL, CONSTRAINT fkItemPedido FOREIGN KEY(ID_Pedido)
+REFERENCES pedido_tb(ID_Pedido)
+);
