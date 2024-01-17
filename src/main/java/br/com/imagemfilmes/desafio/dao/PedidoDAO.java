@@ -45,8 +45,6 @@ public class PedidoDAO extends DAO {
 	}
 
 	public List<Pedido> findPedidosbyClienteId(Long ClienteId) throws SQLException {
-		//SELECT pedido_tb.*, pessoa_tb.*, pedido_item_tb.*,produto_tb.* FROM pedido_tb INNER JOIN pessoa_tb ON pedido_tb.ID_Pessoa = pessoa_tb.ID_Pessoa INNER JOIN pedido_item_tb ON pedido_item_tb.ID_Pedido_Item = pedido_tb.ID_Pedido  INNER JOIN produto_tb ON  pedido_item_tb.ID_Produto = produto_tb.ID_Produto WHERE pedido_tb.ID_Pessoa = ?;
-//ainda com erro
 		try (PreparedStatement psmt = getConnection().prepareStatement("SELECT pedido.*, pessoa.*, pedido_item.*,produto.* FROM pedido_tb INNER JOIN pessoa_tb ON pedido_tb.ID_Pessoa = pessoa_tb.ID_Pessoa \r\n"
 				+ "INNER JOIN pedido_item_tb ON pedido_tb.ID_Pedido_Item = pedido_tb.ID_Pedido  INNER JOIN produto_tb ON  pedido_item_tb.ID_Produto = produto_tb.ID_Produto WHERE ID_Pessoa = ?;")) {
 			psmt.setLong(1, ClienteId);
